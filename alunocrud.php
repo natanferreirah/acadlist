@@ -8,10 +8,11 @@ require_once 'require/protect.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="logoicone.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/img/logoicone.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/alunocrud.css">
     <title>Cadastro de Aluno - acadlist</title>
 </head>
+
 <body>
 
     <aside id="menu">
@@ -44,10 +45,10 @@ require_once 'require/protect.php';
             <form action="/acadlist/require/logout.php " method="post" id="logout">
                 <input type="submit" value="Sair" class="botao">
             </form>
-        </nav>  
+        </nav>
     </aside>
     <main id="conteudo">
-        <table border="1px" solid >
+        <table border="1px" solid>
             <thead>
                 <tr>
                     <th>Matrícula</th>
@@ -59,19 +60,26 @@ require_once 'require/protect.php';
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Natanael</td>
-                    <td>9999999999</td>
-                    <td>29/09/2008</td>
-                    <td>2º Série</td>
-                    <td>Ativo</td>
-                </tr>
-            <tbody>
-            </table>
-            <form action="formcadastroaluno.php" method="post">
-                <input type="submit" value="Cadastrar">
-            </form>
+                <?php
+                $stmt = $conexao->query("SELECT * FROM alunos");
+
+                while ($aluno = $stmt->fetch()) {
+                    echo "<tr>";
+                    echo "<td>{$aluno['id_aluno']}</td>";
+                    echo "<td>{$aluno['nome']}</td>";
+                    echo "<td>{$aluno['cpf']}</td>";
+                    echo "<td>" . date('d/m/Y', strtotime($aluno['data_nascimento'])) . "</td>";
+                    echo "<td>--</td>";
+                    echo "<td>{$aluno['status_aluno']}</td>";
+                    echo '<td><a href="formeditar.php">Editar</a></td>';
+                    echo '<td><a href="controller/excluiraluno.php?id=' . $aluno['id_aluno'] . '" onclick="return confirm(\'Tem certeza que deseja excluir este aluno?\')">Excluir</a></td>';
+                    echo "</tr>";
+                }
+                ?>
+            </tbody>
+        </table>
+        <button><a href="formcadastroaluno.php">Cadastrar</a></button>
     </main>
 </body>
+
 </html>
