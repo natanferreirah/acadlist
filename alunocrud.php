@@ -47,6 +47,7 @@ require_once 'require/protect.php';
             </form>
         </nav>
     </aside>
+
     <main id="conteudo">
         <table border="1px" solid>
             <thead>
@@ -71,7 +72,7 @@ require_once 'require/protect.php';
                     echo "<td>" . date('d/m/Y', strtotime($aluno['data_nascimento'])) . "</td>";
                     echo "<td>--</td>";
                     echo "<td>{$aluno['status_aluno']}</td>";
-                    echo '<td><a href="formeditar.php">Editar</a></td>';
+                    echo '<td><a href="formeditar.php?id=' . $aluno['id_aluno'] . '">Editar</a></td>';
                     echo '<td><a href="controller/excluiraluno.php?id=' . $aluno['id_aluno'] . '" onclick="return confirm(\'Tem certeza que deseja excluir este aluno?\')">Excluir</a></td>';
                     echo "</tr>";
                 }
