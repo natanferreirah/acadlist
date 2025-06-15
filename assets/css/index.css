@@ -93,6 +93,11 @@ body {
     margin: 100px 20px 100px 100px;
 }
 
+#texto {
+    min-width: 450px;
+}
+
+
 #texto1 #texto2 {
     flex-direction: column;
 }
@@ -125,8 +130,8 @@ body {
     z-index: -1;
     max-width: 800px;   
     max-height: 800px;
-    min-width: 400px;   
-    min-height: 400px;
+    min-width: 200px;   
+    min-height: 200px;
 }
 .desenho>img{
     position: relative;
