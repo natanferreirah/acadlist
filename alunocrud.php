@@ -39,7 +39,7 @@ require_once 'require/protect.php';
                 </div>
                 <div class="opcao">
                     <img src="assets/img/turma.png" alt="" class="icone">
-                    <li><a href="">Registrar Turma</a></li>
+                    <li><a href="turmacrud.php">Registrar Turma</a></li>
                 </div>
             </ul>
             <form action="/acadlist/require/logout.php " method="post" id="logout">
