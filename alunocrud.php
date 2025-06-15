@@ -62,6 +62,23 @@ require_once 'require/protect.php';
             </thead>
             <tbody>
                 <?php
+                if (isset($_SESSION['sucesso_editar'])) {
+                    echo $_SESSION['sucesso_editar'];
+                    unset($_SESSION['sucesso_editar']);
+                }
+                if (isset($_SESSION['erro_preencher'])) { // Caso o controller redirecione para cá com erro
+                    echo $_SESSION['erro_preencher'];
+                    unset($_SESSION['erro_preencher']);
+                }
+                if (isset($_SESSION['erro_dados'])) {
+                    echo $_SESSION['erro_dados'];
+                    unset($_SESSION['erro_dados']);
+                }
+                if (isset($_SESSION['erro_id'])) {
+                    echo $_SESSION['erro_id'];
+                    unset($_SESSION['erro_id']);
+                }
+
                 $stmt = $conexao->query("SELECT * FROM alunos");
 
                 while ($aluno = $stmt->fetch()) {
@@ -72,14 +89,16 @@ require_once 'require/protect.php';
                     echo "<td>" . date('d/m/Y', strtotime($aluno['data_nascimento'])) . "</td>";
                     echo "<td>--</td>";
                     echo "<td>{$aluno['status_aluno']}</td>";
-                    echo '<td><a href="formeditar.php?id=' . $aluno['id_aluno'] . '">Editar</a></td>';
-                    echo '<td><a href="controller/excluiraluno.php?id=' . $aluno['id_aluno'] . '" onclick="return confirm(\'Tem certeza que deseja excluir este aluno?\')">Excluir</a></td>';
+                    echo '<td><a href="formeditar.php?id=' . $aluno['id_aluno'] . '" class="editar">Editar</a></td>';
+                    echo '<td><a href="controller/excluiraluno.php?id=' . $aluno['id_aluno'] . '" onclick="return confirm(\'Tem certeza que deseja excluir este aluno?\')" class="excluir">Excluir</a></td>';
                     echo "</tr>";
                 }
                 ?>
             </tbody>
         </table>
-        <button><a href="formcadastroaluno.php">Cadastrar</a></button>
+        <form action="formcadastroaluno.php" method="post">
+            <input type="submit" value="Cadastrar" class="botao_cadastrar">
+        </form>
     </main>
 </body>
 
