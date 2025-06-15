@@ -1,6 +1,7 @@
 <?php
 require_once 'require/conexao.php';
 require_once 'require/protect.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -8,8 +9,8 @@ require_once 'require/protect.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="logoicone.ico" type="image/x-icon">
-    <link rel="stylesheet" href="assets/css/painel.css">
+    <link rel="shortcut icon" href="assets/img/logoicone.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/css/formcadastro.css">
     <title>Formulário de Cadastro - acadlist</title>
 </head>
 
@@ -48,86 +49,48 @@ require_once 'require/protect.php';
         </nav>
     </aside>
     <main id="conteudo">
-        <?php
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $matricula = (isset($_POST["matricula"]) && $_POST["matricula"] != null) ? $_POST["matricula"] : "";
-            $nome = (isset($_POST["nome"]) && $_POST["nome"] != null) ? $_POST["nome"] : "";
-            $cpf = (isset($_POST["cpf"]) && $_POST["cpf"] != null) ? $_POST["cpf"] :
-                "";
-            $data_nascimento = (isset($_POST["data_nascimento"]) && $_POST["data_nascimento"] != null) ?
-                $_POST["data_nascimento"] : "";
-            $turma = (isset($_POST["turma"]) && $_POST["turma"] != null) ?
-                $_POST["turma"] : "";
-            $status = (isset($_POST["status"]) && $_POST["status"] != null) ?
-                $_POST["status"] : "";
-        } elseif (!isset($matricula)) {
-            $matricula = (isset($_GET["matricula"]) && $_GET["matricula"] != null) ? $_GET["matricula"] : "";
-            $nome = NULL;
-            $cpf = NULL;
-            $data_nascimento = NULL;
-            $turma = NULL;
-            $status = NULL;
-        }
-
-        if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "save" && $nome != "") {
-            try {
-                $stmt = $conexao->prepare("INSERT INTO aluno (nome, cpf, data_nascimento) VALUES
-(:nome, :cpf, :data_nascimento)");
-                $stmt->bindValue(":nome", $nome);
-                $stmt->bindValue(":cpf", $cpf);
-                $stmt->bindValue(":data_nascimento", $data_nascimento);
-                if ($stmt->execute()) {
-                    if ($stmt->rowCount() > 0) {
-                        echo "Dados cadastrados com sucesso!";
-                        $matricula = null;
-                        $nome = null;
-                        $cpf = null;
-                        $data_nascimento = null;
-                    } else {
-                        echo "Erro ao tentar efetivar cadastro";
-                    }
-                } else {
-                    throw new PDOException("Erro: Não foi possível executar a declaração
-sql");
-                }
-            } catch (PDOException $erro) {
-                echo "Erro: " . $erro->getMessage();
-            }
-        }
-        ?>
-        <form action="create.php" method="post" id="form">
-            <label for="matricula">Matrícula</label>
-            <input type="text" name="matricula"
-                if (isset($celular) && $celular !=null || $celular !="" ){
-                echo "value=\" {$matricula}\"";
-                }>
-            <label for="matricula">Nome:</label>
-            <input type="text" name="nome"
-                if (isset($celular) && $celular !=null || $celular !="" ){
-                echo "value=\" {$nome}\"";
-                }>
-            <label for="matricula">CPF:</label>       
-            <input type="text" name="cpf"
-                if (isset($celular) && $celular !=null || $celular !="" ){
-                echo "value=\" {$cpf}\"";
-                }>
-            <label for="matricula">Data de Nascimento:</label>
-            <input type="text" name="data_nascimento"
-                if (isset($celular) && $celular !=null || $celular !="" ){
-                echo "value=\" {$data_nascimento}\"";
-                }>
-            <label for="matricula">Turma:</label>
-            <input type="text" name="turma"
-                if (isset($celular) && $celular !=null || $celular !="" ){
-                echo "value=\" {$turma}\"";
-                }>
-            <label for="matricula">Status:</label>
-            <input type="text" name="status"
-                if (isset($celular) && $celular !=null || $celular !="" ){
-                echo "value=\" {$status}\"";
-                }>
-            <input type="submit" value="Salvar">
-            <input type="reset" value="Novo">
+        <form action="controller/cadastraraluno.php" method="post" id="container_form">
+            <div class="rotulo">
+                <label for="nome">Nome:</label>
+            </div>
+            <div class="input_box">
+                <input type="text" name="nome" id="nome">
+            </div>
+            <div class="rotulo">
+                <label for="cpf">CPF:</label>
+            </div>
+            <div class="input_box">
+                <input type="text" name="cpf" id="cpf">
+            </div>
+            <div class="rotulo">
+                <label for="data">Data de Nascimento:</label>
+            </div>
+            <div class="input_box">
+                <input type="date" name="data_nascimento" id="data_nascimento">
+            </div>
+            <div class="rotulo">
+                <label for="turma">Turma:</label>
+            </div>
+            <div class="input_box">
+                <input type="text" name="turma" id="turma">
+            </div>
+            <div class="rotulo">
+                <label for="status">Status:</label>
+            </div>
+            <div id="select">
+                <select name="status" class="select">
+                    <option value="Ativo">Ativo</option>
+                    <option value="Transferido">Transferido</option>
+                </select>
+            </div>
+            <div id="botao_container">
+                <div class="input_botao">
+                    <input type="submit" value="Salvar">
+                </div>
+                <div id="link_container">
+                    <a href="alunocrud.php">Voltar</a>
+                </div>
+            </div>
         </form>
     </main>
 </body>
