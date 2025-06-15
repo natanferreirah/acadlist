@@ -1,6 +1,7 @@
 <?php
 require_once 'require/conexao.php';
 require_once 'require/protect.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -47,49 +48,39 @@ require_once 'require/protect.php';
             </form>
         </nav>
     </aside>
-    <?php
-    if (isset($_GET['id']) && !empty($_GET['id'])) {
-        $id_aluno = $_GET['id'];
-        $stmt = $conexao->prepare("SELECT * FROM alunos WHERE id_aluno = :id_aluno");
-        $stmt->bindValue(':id_aluno', $_GET['id']);
-        if ($stmt->execute()) {   
-        $aluno = $stmt->fetch();
-    }
-}
-    ?>
     <main id="conteudo">
-        <form action="controller/editaraluno.php" method="post" id="container_form">
+        <form action="controller/cadastraraluno.php" method="post" id="container_form">
             <div class="rotulo">
                 <label for="nome">Nome:</label>
             </div>
             <div class="input_box">
-                <input type="text" name="nome" id="nome" value="<?php echo $aluno['nome']; ?>">
+                <input type="text" name="nome" id="nome">
             </div>
             <div class="rotulo">
                 <label for="cpf">CPF:</label>
             </div>
             <div class="input_box">
-                <input type="text" name="cpf" id="cpf" value="<?php echo $aluno['cpf']; ?>">
+                <input type="text" name="cpf" id="cpf">
             </div>
             <div class="rotulo">
                 <label for="data">Data de Nascimento:</label>
             </div>
             <div class="input_box">
-                <input type="date" name="data_nascimento" id="data_nascimento" value="<?php echo date('Y-m-d', strtotime($aluno['data_nascimento'])); ?>">
+                <input type="date" name="data_nascimento" id="data_nascimento">
             </div>
             <div class="rotulo">
                 <label for="turma">Turma:</label>
             </div>
             <div class="input_box">
-                <input type="text" name="turma" id="turma" value="--">
+                <input type="text" name="turma" id="turma">
             </div>
             <div class="rotulo">
                 <label for="status">Status:</label>
             </div>
             <div id="select">
                 <select name="status" class="select">
-                    <option value="<?php echo $aluno['status_aluno'] = 'Ativo' ?>">Ativo</option>
-                    <option value="<?php echo $aluno['status_aluno'] = 'Transferido' ?>">Transferido</option>
+                    <option value="Ativo">Ativo</option>
+                    <option value="Transferido">Transferido</option>
                 </select>
             </div>
             <div id="botao_container">
