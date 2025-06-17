@@ -1,6 +1,7 @@
 <?php 
 require_once '../require/conexao.php';
-session_start();
+require_once '../require/protect.php';
+
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id = $_GET['id'];
     if (!empty($id)) {

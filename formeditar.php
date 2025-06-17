@@ -3,10 +3,10 @@ require_once 'require/conexao.php';
 require_once 'require/protect.php';
 
 if (isset($_GET['id']) &&  !empty($_GET['id'])) {
-    $id_usuario = trim($_GET['id']);
+    $id_aluno = trim($_GET['id']);
 
     $stmt = $conexao->prepare("SELECT * FROM alunos WHERE id_aluno = :id_aluno");
-    $stmt->bindValue(':id_aluno', $_GET['id']);
+    $stmt->bindValue(':id_aluno', $id_aluno, PDO::PARAM_INT );
     $stmt->execute();
     $aluno = $stmt->fetch() ;
         
@@ -51,7 +51,7 @@ if (isset($_GET['id']) &&  !empty($_GET['id'])) {
                 </div>
                 <div class="opcao">
                     <img src="assets/img/turma.png" alt="" class="icone">
-                    <li><a href="">Registrar Turma</a></li>
+                    <li><a href="turmacrud.php">Registrar Turma</a></li>
                 </div>
             </ul>
             <form action="/acadlist/require/logout.php " method="post" id="logout">

@@ -1,6 +1,7 @@
 <?php 
 require_once '../require/conexao.php';
-session_start();
+require_once '../require/protect.php';
+
 
 $sala_atribuida = trim($_POST['sala_atribuida']);
 $turno = trim($_POST['turno']);

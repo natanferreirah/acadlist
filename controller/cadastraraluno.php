@@ -1,6 +1,7 @@
 <?php
 require_once '../require/conexao.php';
-session_start();
+require_once '../require/protect.php';
+
 $nome = trim($_POST['nome']);
 $cpf = trim($cpf = preg_replace('/\D/', '', $_POST['cpf']));
 $data_nascimento = trim($_POST['data_nascimento']);

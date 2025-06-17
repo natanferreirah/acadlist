@@ -1,9 +1,10 @@
 <?php 
-require_once 'require/conexao.php';
+require_once '../require/conexao.php';
+require_once '../require/protect.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['id_turma'], $_POST['sala_atribuida'], $_POST['turno'], $_POST['serie'], $_POST['ano_letivo'])) {
-        $id_turma = trim($_GET['id_turma']);
+        $id_turma = trim($_POST['id_turma']);
         $sala_atribuida = trim($_POST['sala_atribuida']);
         $turno = trim($_POST['turno']);
         $serie = trim($_POST['serie']);
@@ -17,15 +18,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmt->bindValue(':ano_letivo', $ano_letivo);
             if ($stmt->execute()) {
             $_SESSION['sucesso_editar'] = "<p style='color: #03BBEE; font-weight:600; text-align: center;'>Turma editada com sucesso!</p>";
-            header("location: ../turmacrud.php");
+            header("location: ../turmacrud.php?id=$id_turma");
             exit();
             } else {
                 $_SESSION['erro_dados'] = "<p style='color: red; font-weight:600; text-align: center;'>Erro ao atualizar os dados.</p>";
-
+                header("Location: ../turmacrud.php");
+                exit();
             }
         } else {
             $_SESSION['erro_preencher'] = "<p style='color: #03BBEE; font-weight:600; text-align: center;'>Preencha todos os campos obrigatórios.</p>";
-            header("Location: ../formeditar.php?id=" . $id_turma . "");
+            header("Location: ../turmacrud.php?id=" . $id_turma . "");
             exit();
         }
         } else {

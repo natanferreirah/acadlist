@@ -52,6 +52,7 @@ require_once 'require/protect.php';
         <table border="1px" solid>
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Série</th>
                     <th>Sala Atríbuida</th>
                     <th>Turno</th>
@@ -80,12 +81,13 @@ require_once 'require/protect.php';
                     $stmt = $conexao->query("SELECT * FROM turmas");
                     while ($turma = $stmt->fetch()) {
                         echo "<tr>";
+                        echo "<td>{$turma['id_turma']}</td>";
                         echo "<td>{$turma['serie']}</td>";
                         echo "<td>{$turma['sala_atribuida']}</td>";
                         echo "<td>{$turma['turno']}</td>";
                         echo "<td>{$turma['ano_letivo']}</td>";
                         echo '<td><a href="formeditarturma.php?id=' . $turma['id_turma'] . '" class="editar">Editar</a></td>';
-                        echo '<td><a href="controller/excluirturma.php?id=' . $turma['id_turma'] . '" onclick="return confirm(\'Tem certeza que deseja excluir esta turma?\')" class="excluir">Excluir</a></td>';
+                        echo '<td><a href="controller/excluirturma.php?id=' . $turma['id_turma'] . '" onclick="return confirm(\'Tem certeza que deseja excluir?\')" class="excluir">Excluir</a></td>';
                         echo "</tr>";
                     }
             

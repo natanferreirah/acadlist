@@ -1,6 +1,6 @@
 <?php
-session_start();
 require_once '../require/conexao.php';
+require_once '../require/protect.php';
 
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id_turma = $_GET['id'];
