@@ -1,33 +1,18 @@
 <?php
 require_once 'require/conexao.php';
 require_once 'require/protect.php';
-$turmas = null;
-$id_turma = '';
 
-if (isset($_GET['id']) && !empty($_GET['id'])) {
-    $id_turma = trim($_GET['id']);
+if (isset($_GET['id']) &&  !empty($_GET['id'])) {
+    $id_usuario = trim($_GET['id']);
 
-    if (isset($id_turma) && !empty($id_turma)) {
-        $stmt = $conexao->prepare("SELECT * FROM turmas WHERE id_turma = :id_turma");
-        $stmt->bindValue(':id_turma', $id_turma, PDO::PARAM_INT);
-        $stmt->execute();
-        $aluno = $stmt->fetch(); 
-
-        if (!$aluno) {
-            $_SESSION['form_edit_error'] = "<p style='color: red; font-weight:600; text-align: center;'>Aluno não encontrado.</p>";
-            header("Location: alunocrud.php");
-            exit();
-        }
-    } else {
-        $_SESSION['form_edit_error'] = "<p style='color: red; font-weight:600; text-align: center;'>ID do aluno inválido.</p>";
-        header("Location: alunocrud.php");
-        exit();
-    }
-} else {
-    $_SESSION['form_edit_error'] = "<p style='color: red; font-weight:600; text-align: center;'>ID do aluno não fornecido.</p>";
-    header("Location: alunocrud.php");
-    exit();
+    $stmt = $conexao->prepare("SELECT * FROM alunos WHERE id_aluno = :id_aluno");
+    $stmt->bindValue(':id_aluno', $_GET['id']);
+    $stmt->execute();
+    $aluno = $stmt->fetch() ;
+        
 }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -75,25 +60,25 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
         </nav>
     </aside>
     <main id="conteudo">
-        <form action="controller/cadastraraluno.php" method="post" id="container_form">
-            <input type="hidden" name="id_turma" value="<?php echo htmlspecialchars($aluno['id_turma']);?>">
+        <form action="controller/editaraluno.php" method="post" id="container_form">
+            <input type="hidden" name="id_aluno" value="<?php echo htmlspecialchars($aluno['id_aluno']) ?? '';?>">
             <div class="rotulo">
                 <label for="nome">Nome:</label>
             </div>
             <div class="input_box">
-                <input type="text" name="nome" id="nome" value="<?php echo htmlspecialchars($aluno['nome']); ?>">
+                <input type="text" name="nome" id="nome" value="<?php echo htmlspecialchars($aluno['nome']) ?? '' ?>">
             </div>
             <div class="rotulo">
                 <label for="cpf">CPF:</label>
             </div>
             <div class="input_box">
-                <input type="text" name="cpf" id="cpf" value="<?php echo htmlspecialchars($aluno['cpf']);?>">
+                <input type="text" name="cpf" id="cpf" value="<?php echo htmlspecialchars($aluno['cpf']) ?? '';?>">
             </div>
             <div class="rotulo">
                 <label for="data">Data de Nascimento:</label>
             </div>
             <div class="input_box">
-                <input type="date" name="data_nascimento" id="data_nascimento" value="<?php echo htmlspecialchars($aluno['data_nascimento']);?>">
+                <input type="date" name="data_nascimento" id="data_nascimento" value="<?php echo htmlspecialchars($aluno['data_nascimento']) ?? '';?>">
             </div>
             <div class="rotulo">
                 <label for="turma">Turma:</label>
@@ -106,8 +91,9 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
             </div>
             <div id="select">
                 <select name="status" class="select">
-                    <option value="<?php echo htmlspecialchars($aluno['status_aluno']) == 'Ativo';?>">Ativo</option>
-                    <option value="<?php echo htmlspecialchars($aluno['status_aluno']) == 'Transferido';?>">Transferido</option>
+                <option value="<?php echo htmlspecialchars($aluno['status_aluno'] == 'Ativo');?>">Ativo</option>
+                <option value="<?php echo htmlspecialchars($aluno['status_aluno'] == 'Transferido');?>">Transferido</option>
+
                 </select>
             </div>
             <div id="botao_container">
@@ -115,7 +101,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                     <input type="submit" value="Salvar">
                 </div>
                 <div id="link_container">
-                    <a href="alunocrud.php">Voltar</a>
+                    <a href="alunocrud.php" onclick="return confirm('Tem certeza que deseja voltar?')">Voltar</a>
                 </div>
             </div>
         </form>
