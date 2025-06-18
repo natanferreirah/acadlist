@@ -66,13 +66,13 @@ require_once 'require/protect.php';
                     echo $_SESSION['sucesso_editar'];
                     unset($_SESSION['sucesso_editar']);
                 }
-                if (isset($_SESSION['erro_preencher'])) { // Caso o controller redirecione para cá com erro
+                if (isset($_SESSION['erro_preencher'])) {
                     echo $_SESSION['erro_preencher'];
                     unset($_SESSION['erro_preencher']);
                 }
-                if (isset($_SESSION['erro_dados'])) {
-                    echo $_SESSION['erro_dados'];
-                    unset($_SESSION['erro_dados']);
+                if (isset($_SESSION['acesso_invalido'])) {
+                    echo $_SESSION['acesso_invalido'];
+                    unset($_SESSION['acesso_invalido']);
                 }
                 if (isset($_SESSION['erro_id'])) {
                     echo $_SESSION['erro_id'];

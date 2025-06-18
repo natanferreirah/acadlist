@@ -60,34 +60,34 @@ require_once 'require/protect.php';
     ?>
     <main id="conteudo">
         <form action="controller/editarturma.php" method="post" id="container_form">
-            <input type="hidden" name="id_turma" value="<?php echo htmlspecialchars($turma['id_turma']); ?>">
+            <input type="hidden" name="id_turma" value="<?php echo $turma['id_turma']; ?>">
             <div class="rotulo">
                 <label for="serie">Série:</label>
             </div>
             <div class="input_box">
-                <input type="text" name="serie" id="serie" value="<?php echo htmlspecialchars($turma['serie']); ?>">
+                <input type="text" name="serie" id="serie" value="<?php echo $turma['serie']; ?>">
             </div>
             <div class="rotulo">
                 <label for="sala_atribuida">Sala Atribuida:</label>
             </div>
             <div class="input_box">
-                <input type="text" name="sala_atribuida" id="sala_atribuida" value="<?php echo htmlspecialchars($turma['sala_atribuida']) ?>">
+                <input type="text" name="sala_atribuida" id="sala_atribuida" value="<?php echo $turma['sala_atribuida'] ?>">
             </div>
             <div class="rotulo">
                 <label for="ano_letivo">Ano Letivo:</label>
             </div>
             <div class="input_box">
-                <input type="number" min="2000" max="2050" name="ano_letivo" id="ano_letivo" value="<?php echo htmlspecialchars($turma['ano_letivo']) ?>">
+                <input type="number" min="2000" max="2050" name="ano_letivo" id="ano_letivo" value="<?php echo $turma['ano_letivo'] ?>">
             </div>
             <div class="rotulo">
                 <label for="turno">Turno:</label>
             </div>
             <div class="input_box">
                 <select name="turno" id="turno">
-                    <option value="<?php echo htmlspecialchars($turma['turno'] == 'Manhã') ?>">Manhã</option>
-                    <option value="<?php echo htmlspecialchars($turma['turno'] == 'Tarde') ?>">Tarde</option>
-                    <option value="<?php echo htmlspecialchars($turma['turno'] == 'Noite') ?>">Noite</option>
-                    <option value="<?php echo htmlspecialchars($turma['turno'] == 'Integral') ?>">Integral</option>
+                    <option value="Manhã">Manhã</option>
+                    <option value="Tarde">Tarde</option>
+                    <option value="Noite">Noite</option>
+                    <option value="Integral">Integral</option>
                 </select>
             </div>
             <div id="botao_container">
