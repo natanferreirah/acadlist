@@ -1,7 +1,6 @@
 <?php
 require_once '../require/conexao.php';
 require_once '../require/protect.php';
-var_dump($_POST);
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['id_turma'], $_POST['sala_atribuida'], $_POST['turno'], $_POST['serie'], $_POST['ano_letivo'])) {
         $id_turma = trim($_POST['id_turma']);
