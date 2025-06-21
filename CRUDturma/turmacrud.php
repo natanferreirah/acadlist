@@ -58,14 +58,14 @@ require_once '../require/protect.php';
         </nav>
     </aside>
     <main id="conteudo">
-        <table border="1px" solid>
+        <table>
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Série</th>
-                    <th>Sala Atríbuida</th>
-                    <th>Turno</th>
-                    <th>Ano Letivo</th>
+                    <th class="cabecalho">ID</th>
+                    <th class="cabecalho">Série</th>
+                    <th class="cabecalho">Sala Atríbuida</th>
+                    <th class="cabecalho">Turno</th>
+                    <th class="cabecalho">Ano Letivo</th>
                 </tr>
             </thead>
             <tbody>
@@ -83,13 +83,13 @@ require_once '../require/protect.php';
                 $stmt = $conexao->query("SELECT * FROM turmas");
                 while ($turma = $stmt->fetch()) {
                     echo "<tr>";
-                    echo "<td>{$turma['id_turma']}</td>";
-                    echo "<td>{$turma['serie']}</td>";
-                    echo "<td>{$turma['sala_atribuida']}</td>";
-                    echo "<td>{$turma['turno']}</td>";
-                    echo "<td>{$turma['ano_letivo']}</td>";
-                    echo '<td><a href="formeditarturma.php?id=' . $turma['id_turma'] . '" class="editar">Editar</a></td>';
-                    echo '<td><a href="../controller/excluirturma.php?id=' . $turma['id_turma'] . '" onclick="return confirm(\'Tem certeza que deseja excluir?\')" class="excluir">Excluir</a></td>';
+                    echo "<td class='conteudo'>{$turma['id_turma']}</td>";
+                    echo "<td class='conteudo'>{$turma['serie']}</td>";
+                    echo "<td class='conteudo'>{$turma['sala_atribuida']}</td>";
+                    echo "<td class='conteudo'>{$turma['turno']}</td>";
+                    echo "<td class='conteudo'>{$turma['ano_letivo']}</td>";
+                    echo '<td class="botao_crud"><a href="formeditarturma.php?id=' . $turma['id_turma'] . '" class="editar">Editar</a></td>';
+                    echo '<td class="botao_crud"><a href="../controller/excluirturma.php?id=' . $turma['id_turma'] . '" onclick="return confirm(\'Tem certeza que deseja excluir?\')" class="excluir">Excluir</a></td>';
                     echo "</tr>";
                 }
                 ?>

@@ -59,7 +59,7 @@ require_once '../require/protect.php';
     </aside>
 
     <main id="conteudo">
-        <table border="1px" solid>
+        <table>
             <thead>
                 <tr>
                     <th>Matrícula</th>
@@ -85,14 +85,14 @@ require_once '../require/protect.php';
 
                 while ($aluno = $stmt->fetch()) {
                     echo "<tr>";
-                    echo "<td>{$aluno['id_aluno']}</td>";
-                    echo "<td>{$aluno['nome']}</td>";
-                    echo "<td>{$aluno['cpf']}</td>";
-                    echo "<td>" . date('d/m/Y', strtotime($aluno['data_nascimento'])) . "</td>";
-                    echo "<td>--</td>";
-                    echo "<td colspan='1'>{$aluno['status_aluno']}</td>";
-                    echo '<td><a href="formeditaraluno.php?id=' . $aluno['id_aluno'] . '" class="editar">Editar</a></td>';
-                    echo '<td><a href="../controller/excluiraluno.php?id=' . $aluno['id_aluno'] . '" onclick="return confirm(\'Tem certeza que deseja excluir este aluno?\')" class="excluir">Excluir</a></td>';
+                    echo "<td class='conteudo'>{$aluno['id_aluno']}</td>";
+                    echo "<td class='conteudo'>{$aluno['nome']}</td>";
+                    echo "<td class='conteudo'>{$aluno['cpf']}</td>";
+                    echo "<td class='conteudo'>" . date('d/m/Y', strtotime($aluno['data_nascimento'])) . "</td>";
+                    echo "<td class='conteudo'>Sem turma</td>";
+                    echo "<td class='conteudo'>{$aluno['status_aluno']}</td>";
+                    echo '<td  class="botao_crud"><a href="formeditaraluno.php?id=' . $aluno['id_aluno'] . '" class="editar">Editar</a></td>';
+                    echo '<td  class="botao_crud"><a href="../controller/excluiraluno.php?id=' . $aluno['id_aluno'] . '" onclick="return confirm(\'Tem certeza que deseja excluir este aluno?\')" class="excluir">Excluir</a></td>';
                     echo "</tr>";
                 }
                 ?>
