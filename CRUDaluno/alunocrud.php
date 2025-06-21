@@ -27,7 +27,7 @@ require_once '../require/protect.php';
                         <li>Painel</li>
                     </div>
                 </a>
-                <a href="alunocrud.php">
+                <a href="../alunocrud.php">
                     <div class="opcao">
                         <img src="../assets/img/aluno.png" alt="" class="icone">
                         <li>Cadastra Aluno</li>
