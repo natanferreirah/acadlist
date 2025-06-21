@@ -39,21 +39,19 @@ body{
   width: 100%;
 }
 
-#navbar>ul{
+a{
+  text-decoration: none;
+  color: #f1f1f1;
+}
+
+#navbar > ul {
   margin-top: 30px;
   display: flex;
   flex-direction: column;
+  list-style: none;
 }
 
-.opcao{
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  border-bottom: rgba(255, 255, 255, 0.5) 1px solid;
-  padding: 10px;
-}
-
-.opcao>li{
+#navbar > ul > li {
   text-align: center;
   list-style: none;
   color: #f1f1f1;
@@ -62,13 +60,35 @@ body{
   padding: 8px 0 0 0;
 }
 
-.opcao a{
+#navbar > ul > li:hover {
+  transition: 0.5s;
+  background-color: #00708f ;
+}
+
+.opcao {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  border-bottom: rgba(255, 255, 255, 0.5) 1px solid;
+  padding: 10px;
+}
+
+.opcao > li {
+  text-align: center;
+  list-style: none;
+  color: #f1f1f1;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 8px 0 0 0;
+}
+
+.opcao a {
   text-decoration: none;
   color: #f1f1f1;
   font-weight: 600;
 }
 
-.opcao:hover{
+.opcao:hover {
   transition: 0.5s;
   background-color: #00708f;
 }
