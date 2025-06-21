@@ -17,26 +17,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmt->bindValue(':serie', $serie);
             $stmt->bindValue(':ano_letivo', $ano_letivo);
             if ($stmt->execute()) {
-                $_SESSION['sucesso_editar'] = "<p style='color: #03BBEE; font-weight:600; text-align: center;'>Turma editada com sucesso!</p>";
-                header("location: ../turmacrud.php?id=$id_turma");
+                $_SESSION['sucesso'] = "<p style='color: #03BBEE; font-weight:600; text-align: center;'>Turma editada com sucesso!</p>";
+                header("location: ../CRUDturma/turmacrud.php?id=$id_turma");
                 exit();
             } else {
-                $_SESSION['erro_dados'] = "<p style='color: red; font-weight:600; text-align: center;'>Erro ao atualizar os dados.</p>";
-                header("Location: ../turmacrud.php");
+                $_SESSION['erro'] = "<p style='color: red; font-weight:600; text-align: center;'>Erro ao atualizar os dados.</p>";
+                header("Location: ../CRUDturma/turmacrud.php");
                 exit();
             }
         } else {
-            $_SESSION['erro_preencher'] = "<p style='color: #03BBEE; font-weight:600; text-align: center;'>Preencha todos os campos obrigatórios.</p>";
-            header("Location: ../turmacrud.php?id=$id_turma");
+            $_SESSION['erro'] = "<p style='color: red; font-weight:600; text-align: center;'>Preencha todos os campos obrigatórios.</p>";
+            header("Location: ../CRUDturma/turmacrud.php?id=$id_turma");
             exit();
         }
     } else {
-        $_SESSION['acesso_inválido'] = "<p style='color: red; font-weight:600; text-align: center;'>Acesso inválido.</p>";
-        header("Location: ../turmacrud.php");
+        $_SESSION['erro'] = "<p style='color: red; font-weight:600; text-align: center;'>Acesso inválido.</p>";
+        header("Location: ../CRUDturma/turmacrud.php");
         exit();
     }
 } else {
-    $_SESSION['erro_id'] = "<p style='color: red; font-weight:600; text-align: center;'>ID inválido.</p>";
-    header("Location: ../turmacrud.php");
+    $_SESSION['erro'] = "<p style='color: red; font-weight:600; text-align: center;'>ID inválido.</p>";
+    header("Location: ../CRUDturma/turmacrud.php");
     exit();
 }
