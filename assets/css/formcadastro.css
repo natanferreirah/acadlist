@@ -43,6 +43,21 @@ body {
   margin-top: 30px;
   display: flex;
   flex-direction: column;
+  list-style: none;
+}
+
+#navbar > ul > li {
+  text-align: center;
+  list-style: none;
+  color: #f1f1f1;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 8px 0 0 0;
+}
+
+#navbar > ul > li:hover {
+  transition: 0.5s;
+  background-color: #00708f;
 }
 
 .opcao {
