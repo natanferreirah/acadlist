@@ -71,6 +71,7 @@ body{
 .opcao:hover{
   transition: 0.5s;
   background-color: #00708f;
+  cursor: pointer;
 }
 
 .icone{
@@ -101,6 +102,8 @@ body{
   background-color: #f1f1f1;
   color: #03BBEE;
   transition: 0.5s;
+  cursor: pointer;
+
 }
 
 #conteudo{
@@ -147,6 +150,8 @@ a{
 .botao_cadastrar:hover{
   background-color: #006a88;
   transition: 0.5s;
+  cursor: pointer;
+
 }
 .excluir{
   font-weight: 600;   
@@ -157,7 +162,10 @@ a{
 
 .excluir:hover{
   color: #ff1100;
+  cursor: pointer;
+
 }
 .editar:hover{
   color: #03bbee;
+  cursor: pointer;
 }

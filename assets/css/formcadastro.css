@@ -77,15 +77,21 @@ body {
   padding: 8px 0 0 0;
 }
 
-.opcao a {
+a {
   text-decoration: none;
-  color: #f1f1f1;
   font-weight: 600;
 }
 
 .opcao:hover {
   transition: 0.5s;
   background-color: #00708f;
+
+}
+
+#link_container>a{
+  text-decoration: none;
+  color: #03BBEE;
+  font-weight: 500;
 }
 
 .icone {
@@ -116,6 +122,7 @@ body {
   background-color: #f1f1f1;
   color: #03bbee;
   transition: 0.5s;
+  cursor: pointer;
 }
 
 #conteudo {
@@ -195,6 +202,7 @@ body {
 .input_botao > input:hover{
   background-color: #00708f;
   transition: 0.5s;
+  cursor: pointer;
 }
 
 .total {
@@ -212,7 +220,7 @@ body {
 
 .cancelar_link{
   text-decoration: none;
-  color: #f1f1f1;
+  color: #03BBEE;
 }
 .botao_cancelar{
   width: 120px;
@@ -226,4 +234,5 @@ body {
 .botao_cancelar:hover{
   background-color: #700b03;
   transition: 0.5s;
+  cursor: pointer;
 }
