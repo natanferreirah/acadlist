@@ -1,6 +1,6 @@
 <?php
-require_once 'require/conexao.php';
-require_once 'require/protect.php';
+require_once '../require/conexao.php';
+require_once '../require/protect.php';
 
 ?>
 <!DOCTYPE html>
@@ -9,8 +9,8 @@ require_once 'require/protect.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="assets/img/logoicone.ico" type="image/x-icon">
-    <link rel="stylesheet" href="assets/css/formcadastro.css">
+    <link rel="shortcut icon" href="../assets/img/logoicone.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../assets/css/formcadastro.css">
     <title>Formulário de Cadastro - acadlist</title>
 </head>
 
@@ -18,7 +18,7 @@ require_once 'require/protect.php';
 
     <aside id="menu">
         <div id="container_logo">
-            <img src="assets/img/logo2.png" alt="acadlist">
+            <img src="../assets/img/logo2.png" alt="acadlist">
         </div>
         <nav id="navbar">
             <ul>
@@ -59,7 +59,7 @@ require_once 'require/protect.php';
         </nav>
     </aside>
     <main id="conteudo">
-        <form action="controller/cadastrarturma.php" method="post" id="container_form">
+        <form action="../controller/cadastrarturma.php" method="post" id="container_form">
             <input type="hidden" name="id_turma" value="">
             <div class="rotulo">
                 <label for="serie">Série:</label>
