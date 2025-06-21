@@ -4,25 +4,19 @@ require_once '../require/protect.php';
 
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id_turma = $_GET['id'];
-    if (!empty($id_turma)) {
-        $stmt = $conexao->prepare("DELETE FROM turmas WHERE id_turma = :id_turma");
-        $stmt->bindValue(":id_turma", $id_turma, PDO::PARAM_INT);
-        if ($stmt->execute()) {
-            $_SESSION['sucesso_excluir'] = "<p style='color: green; font-weight:600; text-align: center;'>Aluno excluído com sucesso!</p>";
-            header("location: ../turmacrud.php");
-            exit();
-        } else {
-            $_SESSION['erro_excluir'] = "<p style='color: red; font-weight:600; text-align: center;'>Erro ao excluir aluno.</p>";
-            header("location: ../turmacrud.php");
-            exit();
-        }
+    $stmt = $conexao->prepare("DELETE FROM turmas WHERE id_turma = :id_turma");
+    $stmt->bindValue(":id_turma", $id_turma, PDO::PARAM_INT);
+    if ($stmt->execute()) {
+        $_SESSION['sucesso'] = "<p style='color: green; font-weight:600; text-align: center;'>Turma excluída com sucesso!</p>";
+        header("location: ../CRUDturma/turmacrud.php");
+        exit();
     } else {
-        $_SESSION['erro_excluir'] = "<p style='color: red; font-weight:600; text-align: center;'>Erro ao excluir aluno.</p>";
-        header("location: ../turmacrud.php");
+        $_SESSION['erro'] = "<p style='color: red; font-weight:600; text-align: center;'>Erro ao excluir turma.</p>";
+        header("location: ../CRUDturma/turmacrud.php");
         exit();
     }
 } else {
-    $_SESSION['erro_id'] = "<p style='color: red; font-weight:600; text-align: center;'>ID do aluno não fornecido.</p>";
-    header("location: ../turmacrud.php");
-    exit();    
+    $_SESSION['erro'] = "<p style='color: red; font-weight:600; text-align: center;'>ID da turma não fornecido.</p>"; // 
+    header("location: ../CRUDturma/turmacrud.php");
+    exit();
 }
