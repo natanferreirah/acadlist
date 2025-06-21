@@ -7,7 +7,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     $stmt = $conexao->prepare("DELETE FROM turmas WHERE id_turma = :id_turma");
     $stmt->bindValue(":id_turma", $id_turma, PDO::PARAM_INT);
     if ($stmt->execute()) {
-        $_SESSION['sucesso'] = "<p style='color: green; font-weight:600; text-align: center;'>Turma excluída com sucesso!</p>";
+        $_SESSION['sucesso'] = "<p style='color: #03BBEE; font-weight:600; text-align: center;'>Turma excluída com sucesso!</p>";
         header("location: ../CRUDturma/turmacrud.php");
         exit();
     } else {

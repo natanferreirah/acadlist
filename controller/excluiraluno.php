@@ -7,7 +7,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     $stmt = $conexao->prepare("DELETE FROM alunos WHERE id_aluno = :id_aluno");
     $stmt->bindValue(':id_aluno', $id);
         if ($stmt->execute()) {
-            $_SESSION['sucesso'] = "<p style='color: green; font-weight:600; text-align: center;'>Aluno excluído com sucesso!</p>";
+            $_SESSION['sucesso'] = "<p style='color: #03BBEE; font-weight:600; text-align: center;'>Aluno excluído com sucesso!</p>";
             header("location: ../CRUDaluno/alunocrud.php");
             exit();
         } else {
