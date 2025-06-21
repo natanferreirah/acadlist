@@ -169,3 +169,30 @@ a{
   color: #03bbee;
   cursor: pointer;
 }
+
+table {
+  width: 1100px;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th{
+  border-bottom: 1px solid black;
+  padding: 2px;
+}
+
+td{
+  padding: 5px;
+  border-bottom: 1px solid black;
+}
+
+.conteudo{
+ text-align: center;
+}
+
+.botao_crud{
+  border-top: 1px solid black;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.5);
+}
+
