@@ -20,27 +20,37 @@ require_once 'require/protect.php';
             <img src="assets/img/logo2.png" alt="acadlist">
         </div>
         <nav id="navbar">
-            <ul>
-                <div class="opcao">
-                    <a href="login.php"><img src="assets/img/painel.png" alt="" class="icone"></a>
-                    <li><a href="painel.php">Painel</a></li>
-                </div>
-                <div class="opcao">
-                    <img src="assets/img/aluno.png" alt="" class="icone">
-                    <li><a href="alunocrud.php">Cadastrar Aluno</a></li>
-                </div>
-                <div class="opcao">
-                    <img src="assets/img/professor.png" alt="" class="icone">
-                    <li><a href="professorcrud.php">Cadastrar Professor</a></li>
-                </div>
-                <div class="opcao">
-                    <img src="assets/img/materia.png" alt="" class="icone">
-                    <li><a href="">Registrar Matéria</a></li>
-                </div>
-                <div class="opcao">
-                    <img src="assets/img/turma.png" alt="" class="icone">
-                    <li><a href="turmacrud.php">Registrar Turma</a></li>
-                </div>
+       <ul>
+                 <a href="painel.php">
+                    <div class="opcao">
+                        <img src="assets/img/painel.png" alt="" class="icone">
+                        <li>Painel</li>
+                    </div>
+                </a>
+                 <a href="CRUDaluno/alunocrud.php">
+                    <div class="opcao">
+                        <img src="assets/img/aluno.png" alt="" class="icone">
+                        <li>Cadastra Aluno</li>
+                    </div>
+                </a>
+                <a href="">
+                    <div class="opcao">
+                        <img src="assets/img/turma.png" alt="" class="icone">
+                        <li>Cadastrar Professor</li>
+                    </div>
+                </a>
+                 <a href="">
+                    <div class="opcao">
+                        <img src="assets/img/materia.png" alt="" class="icone">
+                        <li>Registrar Matéria</li>
+                    </div>
+                </a>
+                 <a href="CRUDturma/turmacrud.php">
+                    <div class="opcao">
+                        <img src="assets/img/turma.png" alt="" class="icone">
+                        <li>Registrar Turma</li>
+                    </div>
+                </a>
             </ul>
             <form action="/acadlist/require/logout.php " method="post" id="logout">
                 <input type="submit" value="Sair" class="botao">
