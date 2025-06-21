@@ -57,16 +57,6 @@ require_once '../require/protect.php';
             </form>
         </nav>
     </aside>
-<?php
-    if (isset($_SESSION['sucesso'])) {
-        echo $_SESSION['sucesso'];
-        unset($_SESSION['sucesso']);
-    }
-    if (isset($_SESSION['erro'])) {
-        echo $_SESSION['erro'];
-        unset($_SESSION['erro']);
-    }
-?>
     <main id="conteudo">
         <table border="1px" solid>
             <thead>
@@ -80,6 +70,16 @@ require_once '../require/protect.php';
             </thead>
             <tbody>
                 <?php
+                    if (isset($_SESSION['sucesso'])) {
+                        echo $_SESSION['sucesso'];
+                        unset($_SESSION['sucesso']);
+                    }
+                    if (isset($_SESSION['erro'])) {
+                        echo $_SESSION['erro'];
+                        unset($_SESSION['erro']);
+                    }
+
+
                 $stmt = $conexao->query("SELECT * FROM turmas");
                 while ($turma = $stmt->fetch()) {
                     echo "<tr>";
