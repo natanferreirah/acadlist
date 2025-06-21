@@ -89,7 +89,7 @@ require_once '../require/protect.php';
                     echo "<td>{$turma['turno']}</td>";
                     echo "<td>{$turma['ano_letivo']}</td>";
                     echo '<td><a href="formeditarturma.php?id=' . $turma['id_turma'] . '" class="editar">Editar</a></td>';
-                    echo '<td><a href="excluirturma.php?id=' . $turma['id_turma'] . '" onclick="return confirm(\'Tem certeza que deseja excluir?\')" class="excluir">Excluir</a></td>';
+                    echo '<td><a href="../controller/excluirturma.php?id=' . $turma['id_turma'] . '" onclick="return confirm(\'Tem certeza que deseja excluir?\')" class="excluir">Excluir</a></td>';
                     echo "</tr>";
                 }
                 ?>
