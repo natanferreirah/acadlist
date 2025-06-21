@@ -14,16 +14,16 @@ if (!empty($nome) && !empty($cpf) && !empty($data_nascimento) && !empty($status)
     $stmt->bindValue(':data_nascimento', $data_nascimento);
     $stmt->bindValue(':status_aluno', $status);
     if ($stmt->execute()) {
-        $_SESSION['sucesso_cadastrar'] = "<p style='color: #03BBEE; font-weight:600; text-align: center;'>Aluno cadastrado com sucesso</p>"; 
-        header("location: ../alunocrud.php");
+        $_SESSION['sucesso'] = "<p style='color: #03BBEE; font-weight:600; text-align: center;'>Aluno cadastrado com sucesso</p>"; 
+        header("location: ../CRUDaluno/alunocrud.php");
         exit();
     } else {
-    $_SESSION['erro_cadastrar'] = "<p style='color: #03BBEE; font-weight:600; text-align: center;'>Erro ao cadastrar aluno</p>";
-    header("location: ../formcadastroaluno.php");
+    $_SESSION['erro'] = "<p style='color: #03BBEE; font-weight:600; text-align: center;'>Erro ao cadastrar aluno</p>";
+    header("location: ../CRUDaluno/alunocrud.php");
     exit();
 }
 } else {
-    $_SESSION['erro_cadastrar'] = "<p style='color: #03BBEE; font-weight:600; text-align: center;'>Preencha todos o campos";
-    header("location: ../formcadastroaluno.php");
+    $_SESSION['erro'] = "<p style='color: #03BBEE; font-weight:600; text-align: center;'>Preencha todos o campos";
+    header("location: ../CRUDaluno/alunocrud.php");
     exit();
 }

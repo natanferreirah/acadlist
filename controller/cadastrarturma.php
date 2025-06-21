@@ -15,13 +15,13 @@ if (!empty($sala_atribuida) && !empty($turno) && !empty($ano_letivo) && !empty($
     $stmt->bindValue(':ano_letivo', $ano_letivo);
     $stmt->bindValue(':serie', $serie);
     if ($stmt->execute()) {
-        $_SESSION['sucesso_cadastrar_turma'] = "<p style='color: #03BBEE; font-weight:600; text-align: center;'>Turma cadastrada</p>";
-        header("location: ../turmacrud.php");
+        $_SESSION['sucesso'] = "<p style='color: #03BBEE; font-weight:600; text-align: center;'>Turma cadastrada!</p>";
+        header("location: ../CRUDturma/turmacrud.php");
         exit();
     }
 } else {
-    $_SESSION['erro_cadastrar_turma'] = "<p style='color: #03BBEE; font-weight:600; text-align: center;'>Preencha todos os campos";
-    header("location: ../formcadastroturma.php");
+    $_SESSION['erro'] = "<p style='color: #03BBEE; font-weight:600; text-align: center;'>Preencha todos os campos";
+    header("location: ../CRUDturma/formcadastroturma.php");
     exit();
 }
 ?>
