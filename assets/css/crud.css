@@ -186,7 +186,7 @@ a{
 
 #table_container_aluno{
   overflow: auto;
-  height: 211px;
+  height: auto;
   width: 1000px;
 }
 
