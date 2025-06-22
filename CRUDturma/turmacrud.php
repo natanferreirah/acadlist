@@ -58,6 +58,8 @@ require_once '../require/protect.php';
         </nav>
     </aside>
     <main id="conteudo">
+        <h1 class="titulo_crud">Cadastrar Turma</h1>   
+        <div id="table_container_turma">
         <table>
             <thead>
                 <tr>
@@ -95,6 +97,7 @@ require_once '../require/protect.php';
                 ?>
             </tbody>
         </table>
+        </div>
         <form action="formcadastroturma.php" method="post">
             <input type="submit" value="Cadastrar" class="botao_cadastrar">
         </form>
