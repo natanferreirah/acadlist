@@ -177,6 +177,7 @@ a{
   text-align: center;
   color: #03bbee;
   font-size: 40px;
+  cursor: none;
 }
 #table_container_turma{
   overflow: auto;
