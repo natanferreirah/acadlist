@@ -59,6 +59,8 @@ require_once '../require/protect.php';
     </aside>
 
     <main id="conteudo">
+        <h1 class="titulo_crud">Cadastrar Aluno</h1>
+        <div id="table_container_aluno">
         <table>
             <thead>
                 <tr>
@@ -98,6 +100,8 @@ require_once '../require/protect.php';
                 ?>
             </tbody>
         </table>
+        </div>
+
         <form action="formcadastroaluno.php" method="post">
             <input type="submit" value="Cadastrar" class="botao_cadastrar">
         </form>

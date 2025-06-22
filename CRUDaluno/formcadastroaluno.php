@@ -94,6 +94,16 @@ require_once '../require/protect.php';
                     <option value="Transferido">Transferido</option>
                 </select>
             </div>
+        <?php
+        if (isset($_SESSION['sucesso'])) {
+            echo $_SESSION['sucesso'];
+            unset($_SESSION['sucesso']);
+            }
+        if (isset($_SESSION['erro'])) {
+            echo $_SESSION['erro'];
+            unset($_SESSION['erro']);
+        }
+        ?>
             <div id="botao_container">
                 <div class="input_botao">
                     <input type="submit" value="Salvar">

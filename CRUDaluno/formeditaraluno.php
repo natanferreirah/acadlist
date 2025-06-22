@@ -102,8 +102,8 @@ if (isset($_GET['id']) &&  !empty($_GET['id'])) {
             </div>
             <div id="select">
                 <select name="status" class="select">
-                <option value="<?php echo htmlspecialchars($aluno['status_aluno'] == 'Ativo');?>">Ativo</option>
-                <option value="<?php echo htmlspecialchars($aluno['status_aluno'] == 'Transferido');?>">Transferido</option>
+                <option value="Ativo">Ativo</option>
+                <option value="Transferido">Transferido</option>
 
                 </select>
             </div>
