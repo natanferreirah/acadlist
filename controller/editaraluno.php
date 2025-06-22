@@ -31,12 +31,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 exit();
             } else {
                 $_SESSION['erro'] = "<p style='color: red; font-weight:600; text-align: center;'>Erro ao atualizar os dados.</p>";
-                header("Location: ../CRUDaluno/alunocrud.php");
+                header("Location: ../CRUDaluno/formeditaraluno.php");
                 exit();
             }
         } else {
             $_SESSION['erro'] = "<p style='color: red; font-weight:600; text-align: center;'>Preencha todos os campos obrigatórios.</p>";
-            header("Location: ../CRUDaluno/alunocrud.php?id=$id_aluno");
+            header("Location: ../CRUDaluno/formeditaraluno.php?id=$id_aluno");
             exit();
         }
     } else {
@@ -46,6 +46,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 } else {
     $_SESSION['erro'] = "<p style='color: red; font-weight:600; text-align: center;'>ID inválido.</p>";
-    header("Location: ../CRUDturma/turmacrud.php");
+    header("Location: ../CRUDaluno/alunocrud.php");
     exit();
 }

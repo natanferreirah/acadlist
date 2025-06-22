@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 exit();
             } else {
                 $_SESSION['erro'] = "<p style='color: red; font-weight:600; text-align: center;'>Erro ao atualizar os dados.</p>";
-                header("Location: ../CRUDturma/turmacrud.php");
+                header("Location: ../CRUDturma/formeditarturma.php");
                 exit();
             }
         } else {
