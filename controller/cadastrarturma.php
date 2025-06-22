@@ -20,7 +20,7 @@ if (!empty($sala_atribuida) && !empty($turno) && !empty($ano_letivo) && !empty($
         exit();
     }
 } else {
-    $_SESSION['erro'] = "<p style='color: #03BBEE; font-weight:600; text-align: center;'>Preencha todos os campos";
+    $_SESSION['erro'] = "<p style='color: red; font-weight:600; text-align: center;'>Preencha todos os campos";
     header("location: ../CRUDturma/formcadastroturma.php");
     exit();
 }
