@@ -104,9 +104,18 @@ if (isset($_GET['id']) &&  !empty($_GET['id'])) {
                 <select name="status" class="select">
                 <option value="Ativo">Ativo</option>
                 <option value="Transferido">Transferido</option>
-
                 </select>
             </div>
+            <?php 
+                  if (isset($_SESSION['sucesso'])) {
+                        echo $_SESSION['sucesso'];
+                        unset($_SESSION['sucesso']);
+                    }
+                    if (isset($_SESSION['erro'])) {
+                        echo $_SESSION['erro'];
+                        unset($_SESSION['erro']);
+                    }
+            ?>
             <div id="botao_container">
                 <div class="input_botao">
                     <input type="submit" value="Salvar">
