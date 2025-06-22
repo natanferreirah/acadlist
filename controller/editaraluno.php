@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once '../require/conexao.php';
 require_once '../require/protect.php';
 
@@ -11,12 +10,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $data_nascimento = trim($_POST['data_nascimento']);
         $status = trim($_POST['status']);
         if (!empty($id_aluno)  && !empty($nome)  && !empty($cpf)  && !empty($data_nascimento)  && !empty($status)) {
-            $stmt = $conexao->prepare("SELECT id_aluno FROM alunos WHERE cpf= :cpf");
+            $stmt = $conexao->prepare("SELECT id_aluno FROM alunos WHERE cpf= :cpf AND id_aluno != :id_aluno");
             $stmt->bindValue(':cpf', $cpf);
+            $stmt->bindValue(':id_aluno', $id_aluno, PDO::PARAM_INT);
             $stmt->execute();
             if ($cpf_check = $stmt->fetch()) {
                 $_SESSION['erro'] = "<p style='color: red; font-weight:600; text-align: center;'>CPF já cadastrado</p>";
-                header("location: ../CRUDaluno/formcadastroaluno.php");
+                header("location: ../CRUDaluno/formeditaraluno.php?id=$id_aluno");
                 exit();
             }
             $stmt = $conexao->prepare("UPDATE alunos SET nome = :nome, cpf = :cpf, data_nascimento = :data_nascimento, status_aluno = :status_aluno WHERE id_aluno = :id_aluno");
