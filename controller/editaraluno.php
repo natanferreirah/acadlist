@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmt->execute();
             if ($cpf_check = $stmt->fetch()) {
                 $_SESSION['erro'] = "<p style='color: red; font-weight:600; text-align: center;'>CPF já cadastrado</p>";
-                header("location: ../CRUDaluno/formeditaraluno.php?id=$id_aluno");
+                header("location: ../views/formeditaraluno.php?id=$id_aluno");
                 exit();
             }
             $stmt = $conexao->prepare("UPDATE alunos SET nome = :nome, cpf = :cpf, data_nascimento = :data_nascimento, status_aluno = :status_aluno WHERE id_aluno = :id_aluno");
