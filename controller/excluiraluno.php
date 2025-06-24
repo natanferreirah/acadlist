@@ -8,16 +8,16 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     $stmt->bindValue(':id_aluno', $id);
         if ($stmt->execute()) {
             $_SESSION['sucesso'] = "<p style='color: #03BBEE; font-weight:600; text-align: center;'>Aluno excluído com sucesso!</p>";
-            header("location: ../CRUDaluno/alunocrud.php");
+            header("location: ../views/alunocrud.php");
             exit();
         } else {
             $_SESSION['erro'] = "<p style='color: red; font-weight:600; text-align: center;'>Erro ao excluir aluno.</p>";
-            header("location: ../CRUDaluno/alunocrud.php");
+            header("location: ../views/alunocrud.php");
             exit();
         }
 } else {
     $_SESSION['erro'] = "<p style='color: red; font-weight:600; text-align: center;'>ID do aluno não fornecido.</p>";
-    header("location: ../CRUDaluno/alunocrud.php");
+    header("location: ../views/alunocrud.php");
     exit();
 }
 
