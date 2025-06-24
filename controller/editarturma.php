@@ -1,6 +1,7 @@
 <?php
 require_once '../require/conexao.php';
 require_once '../require/protect.php';
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['id_turma'], $_POST['sala_atribuida'], $_POST['turno'], $_POST['serie'], $_POST['ano_letivo'])) {
         $id_turma = trim($_POST['id_turma']);
@@ -17,25 +18,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmt->bindValue(':ano_letivo', $ano_letivo);
             if ($stmt->execute()) {
                 $_SESSION['sucesso'] = "<p style='color: #03BBEE; font-weight:600; text-align: center;'>Turma editada com sucesso!</p>";
-                header("location: ../CRUDturma/turmacrud.php");
+                header("location: ../views/turmacrud.php");
                 exit();
             } else {
                 $_SESSION['erro'] = "<p style='color: red; font-weight:600; text-align: center;'>Erro ao atualizar os dados.</p>";
-                header("Location: ../CRUDturma/formeditarturma.php");
+                header("Location: ../views/formeditarturma.php?id=$id_turma");
                 exit();
             }
         } else {
             $_SESSION['erro'] = "<p style='color: red; font-weight:600; text-align: center;'>Preencha todos os campos obrigatórios.</p>";
-            header("Location: ../CRUDturma/formeditarturma.php?id=$id_turma");
+            header("Location: ../views/formeditarturma.php?id=$id_turma");
             exit();
         }
     } else {
         $_SESSION['erro'] = "<p style='color: red; font-weight:600; text-align: center;'>Acesso inválido.</p>";
-        header("Location: ../CRUDturma/turmacrud.php");
+        header("Location: ../views/turmacrud.php");
         exit();
     }
 } else {
     $_SESSION['erro'] = "<p style='color: red; font-weight:600; text-align: center;'>ID inválido.</p>";
-    header("Location: ../CRUDturma/turmacrud.php");
+    header("Location: ../views/turmacrud.php");
     exit();
 }
