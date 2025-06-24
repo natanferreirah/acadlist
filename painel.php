@@ -30,7 +30,7 @@ require_once 'require/protect.php';
                  <a href="views/alunocrud.php">
                     <div class="opcao">
                         <img src="assets/img/aluno.png" alt="" class="icone">
-                        <li>Cadastra Aluno</li>
+                        <li>Cadastrar Aluno</li>
                     </div>
                 </a>
                 <a href="">
