@@ -27,7 +27,7 @@ require_once 'require/protect.php';
                         <li>Painel</li>
                     </div>
                 </a>
-                 <a href="CRUDaluno/alunocrud.php">
+                 <a href="views/alunocrud.php">
                     <div class="opcao">
                         <img src="assets/img/aluno.png" alt="" class="icone">
                         <li>Cadastra Aluno</li>
@@ -45,7 +45,7 @@ require_once 'require/protect.php';
                         <li>Registrar Matéria</li>
                     </div>
                 </a>
-                 <a href="CRUDturma/turmacrud.php">
+                 <a href="views/turmacrud.php">
                     <div class="opcao">
                         <img src="assets/img/turma.png" alt="" class="icone">
                         <li>Registrar Turma</li>
