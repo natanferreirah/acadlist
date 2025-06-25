@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmt->bindValue(':cpf', $cpf);
             $stmt->bindValue(':id_aluno', $id_aluno, PDO::PARAM_INT);
             $stmt->execute();
-            if ($cpf_check = $stmt->fetch()) {
+            if ($stmt->fetch()) {
                 $_SESSION['erro'] = "<p style='color: red; font-weight:600; text-align: center;'>CPF já cadastrado</p>";
                 header("location: ../views/formeditaraluno.php?id=$id_aluno");
                 exit();
