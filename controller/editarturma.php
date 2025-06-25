@@ -10,6 +10,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $serie = trim($_POST['serie']);
         $ano_letivo = trim($_POST['ano_letivo']);
         if (!empty($id_turma) && !empty($sala_atribuida) && !empty($serie) && !empty($ano_letivo)) {
+            try {
+                $stmt = $conexao->prepare("SELECT id_turma FROM turmas WHERE serie = :serie AND id_turma != :id_turma");
+                $stmt->bindValue(':id_turma', $id_turma, PDO::PARAM_INT);
+                $stmt->bindValue(':serie', $serie);
+                $stmt->execute();
+                if ($stmt->fetch()) {
+                    $_SESSION['erro'] = "<p style='color: red; font-weight:600; text-align: center;'>Esta série já está cadastrada.</p>";
+                    header("location: ../views/formeditarturma.php?id=$id_turma");
+                    exit();
+                }
+                $stmt = $conexao->prepare("SELECT id_turma FROM turmas WHERE sala_atribuida = :sala_atribuida AND id_turma != :id_turma");
+                $stmt->bindValue(':id_turma', $id_turma, PDO::PARAM_INT);
+                $stmt->bindValue(':sala_atribuida', $sala_atribuida);
+                $stmt->execute();
+                if ($stmt->fetch()) {
+                    $_SESSION['erro'] = "<p style='color: red; font-weight:600; text-align: center;'>Esta sala já está atribuída a outra turma.</p>";
+                    header("location: ../views/formeditarturma.php?id=$id_turma");
+                    exit();
+                }
+            } catch (Exception $e) {
+                echo $e->getMessage();
+            }
             $stmt = $conexao->prepare("UPDATE turmas SET sala_atribuida = :sala_atribuida, turno = :turno, serie = :serie, ano_letivo = :ano_letivo WHERE id_turma = :id_turma");
             $stmt->bindValue(':id_turma', $id_turma, PDO::PARAM_INT);
             $stmt->bindValue(':sala_atribuida', $sala_atribuida);
